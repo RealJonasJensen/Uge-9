@@ -18,6 +18,6 @@ app.use(express.static(__dirname + "/views"))
 app.use("", taskRoutes)
 
 
-app.listen(process.env.port || 3000, (req, res) => {
+app.listen(process.env.port || 4000, (req, res) => {
     console.log("Server is turned on!")
 })
