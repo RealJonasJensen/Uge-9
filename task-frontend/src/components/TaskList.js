@@ -36,19 +36,13 @@ class TaskList extends Component {
     }
 
     updateHandler = (task) => {
-        console.log("Lets update id: ", task._id)
+        // console.log("Lets update id: ", task._id)
         const updateUrl = APIURL + task._id;
-
         axios.put(updateUrl, { completed: !task.completed })
             .then(response => {
-                console.log(response)
-                const tasks = this.state.tasks.map(task => {
-                    if (task._id === response.data._id) {
-                        return { ...task, completed: !task.completed };
-                    } else {
-                        return task;
-                    }
-                })
+                // console.log(response)
+                // If task id is is same as response id. Then spread task out, and change completed. Else just return the same task
+                const tasks = this.state.tasks.map(task =>  task._id === response.data._id ? { ...task, completed: !task.completed} : task)
                 this.setState({ tasks })
             })
 
